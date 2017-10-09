@@ -1,7 +1,7 @@
 # This module build endpoint with id and params
 module EnpointBuilder
   def self.builder(enpoint)
-      enpoint.gsub("$id", $id_hash[$identifier_name].to_s)
+    enpoint.gsub("$id", $id_hash[$identifier_name].to_s)
   end
 
   def self.param(endpoint, param)

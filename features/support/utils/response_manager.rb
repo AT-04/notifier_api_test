@@ -18,7 +18,7 @@ module ResponseManager
   end
 
   def self.diff_hash(hash)
-    hash.delete_if { |key| !(@copy[key].eql? @template[key]) }
+    hash.delete_if {|key| !(@copy[key].eql? @template[key])}
   end
 
   def self.build_response(filename, request, expected, response)
@@ -30,8 +30,8 @@ module ResponseManager
   end
 
   def self.build_with_hash(request, expected, response)
-    replace_in_hash(request)
-    replace_in_hash(expected)
+    puts replace_in_hash(request)
+    puts replace_in_hash(expected)
     replace_in_hash(diff_hash(response))
   end
 
@@ -51,7 +51,7 @@ module ResponseManager
   end
 
   def self.diff_array(hash)
-    hash.delete_if { |key| !(@copy[0][key].eql? @template[0][key]) }
+    hash.delete_if {|key| !(@copy[0][key].eql? @template[0][key])}
   end
 
   def self.build_error_response(filename, expected, response)

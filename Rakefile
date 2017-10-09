@@ -3,14 +3,10 @@ require 'cucumber'
 require 'cucumber/rake/task'
 require 'report_builder'
 
-
-
 desc 'This task built the json report '
 task :rjson, [:tag] do |t, args|
   sh "cucumber -t @#{args.tag} -f json -o reports/#{args.tag}/report.json"
 end
-
-
 
 desc 'This task built the html report '
 task :rhtml, [:tag] do |t, args|
@@ -23,5 +19,3 @@ task :rhtml, [:tag] do |t, args|
   end
   ReportBuilder.build_report
 end
-
-

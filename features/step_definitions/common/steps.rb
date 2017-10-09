@@ -25,9 +25,10 @@ When(/^I set the body as:$/) do |body|
   @request.body = body
 end
 
-When(/^I set the body with id:$/) do |body|
+When(/^I set the body with (?:\w+):$/) do |body|
   @body = BodyBuilder.builder(body)
   @request.body = BodyBuilder.builder(body)
+  puts @body
 end
 
 When(/^I save the '(\w+)' of '(channels|notification|templates)'$/) do |name, type|
@@ -52,8 +53,8 @@ end
 
 Then(/^I expect (?:PUT|POST) response is the same as GET response$/) do
   expect(@response.body).to eq @stored_response
-  puts @response.body
-  puts @stored_response
+  @response.body
+  @stored_response
 end
 
 Then(/^I expect that the GET response it is empty$/) do
@@ -95,4 +96,15 @@ Then(/^excluding '([^"]*)' and '(.*)' the response body contains:$/) do |exclude
   expect(json).to be_json_eql(@response.body).excluding(exclude1, exclude2)
   puts json
   puts @response.body
+end
+
+Then(/^excluding '([^"]*)' and '(.*)' and '(.*)' the response body contains:$/) do |exclude1, exclude2, exclude3, json|
+  expect(json).to be_json_eql(@response.body).excluding(exclude1, exclude2, exclude3)
+  puts json
+  puts @response.body
+end
+
+Then(/^I generate '(\w+)' letter (\d+) times and save$/) do |letter, n|
+  $id_hash.store('name', RequestManager.generator(letter, n))
+  puts $id_hash
 end

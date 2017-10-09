@@ -1,0 +1,9 @@
+[
+  {
+    "id": "Integer",
+    "name": "string",
+    "subjectTemplate": "string",
+    "contentTemplate": "string",
+    "description": "string"
+  }
+]

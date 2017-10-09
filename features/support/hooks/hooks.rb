@@ -13,4 +13,3 @@ After('@delete_templates') do
   request.method = 'DELETE'
   RequestManager.execute_request(request)
 end
-
