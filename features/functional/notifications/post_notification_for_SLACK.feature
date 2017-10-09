@@ -20,7 +20,7 @@ Feature: Functional post for Notification for SLACK
     When I set the body with id:
     """
          {
-          "channelId": $id,
+          "channelId": $channels_id,
           "recipients": ["<recipients>"],
           "content": "<content>"
           }
@@ -39,7 +39,7 @@ Feature: Functional post for Notification for SLACK
     When I set the body with id:
     """
          {
-         "channelId": $id,
+         "channelId": $channels_id,
          "priority": "<priority>",
          "recipients": ["<recipients>"],
           "subject": "<subject>",
@@ -71,12 +71,12 @@ Feature: Functional post for Notification for SLACK
     And I save the 'id' of 'notification'
     Then I make a 'GET' request to '/notifications/$id' until the field 'notification' at 'status' is 'DELIVERED'
     Examples:
-      | channel_id | recipients | content                           |
-      | "$id"      | #general   | A testing message from notifier 1 |
-      | $id.5      | #general   | A testing message from notifier 2 |
-      | $id.435    | #general   | A testing message from notifier 3 |
-      | $id.645    | #general   | A testing message from notifier 4 |
-      | $id.999    | #general   | A testing message from notifier 5 |
+      | channel_id       | recipients | content                           |
+      | "$channels_id"   | #general   | A testing message from notifier 1 |
+      | $channels_id.5   | #general   | A testing message from notifier 2 |
+      | $channels_id.435 | #general   | A testing message from notifier 3 |
+      | $channels_id.645 | #general   | A testing message from notifier 4 |
+      | $channels_id.999 | #general   | A testing message from notifier 5 |
 
   @delete_channel
   Scenario Outline: Sending notification to multiple recipients
@@ -84,7 +84,7 @@ Feature: Functional post for Notification for SLACK
     When I set the body with id:
     """
          {
-          "channelId": $id,
+          "channelId": $channels_id,
           "recipients": [<recipients>],
           "content": "<content>"
           }

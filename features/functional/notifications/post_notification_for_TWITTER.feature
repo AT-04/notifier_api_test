@@ -23,7 +23,7 @@ Feature: Functional post for Notification for TWITTER
     When I set the body with id:
     """
          {
-         "channelId": $id,
+         "channelId": $channels_id,
          "priority": "<priority>",
          "recipients": ["<recipients>"],
           "subject": "<subject>",
