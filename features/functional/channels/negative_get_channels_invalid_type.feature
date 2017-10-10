@@ -16,7 +16,7 @@ Feature: Negative request get channels with invalid type
     And I execute the request to the endpoint
     Then I expect a '200' status code
     And I save the 'id' of 'channels'
-  @delete_channel
+  @delete_channel @bug
   Scenario Outline: Get channel of invalid and empty type
     Given I make a 'GET' request to '/channels' with:
     | type | <Type> |
@@ -37,7 +37,7 @@ Feature: Negative request get channels with invalid type
     | ANOTHER |
     |         |
     | $       |
-  @delete_channel
+  @delete_channel @bug
   Scenario: Get channel of name empty
     Given I make a 'GET' request to '/channels' with:
     | name |  |
@@ -63,7 +63,7 @@ Feature: Negative request get channels with invalid type
     And the response body contains excluding 'timestamp':
     """
     """
-  @delete_channel
+  @delete_channel @bug
   Scenario Outline: Get channel with invalid name and ignoreCase
     Given I make a 'GET' request to '/channels' with:
     | name       | <Name> |

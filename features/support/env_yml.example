@@ -1,12 +1,5 @@
 app:
-  host: http://12.43.3.94
-  port: 8080
-  rootPath: /api/v2
-
-database:
-  connection: postgres
-  host: 127.0.0.1
-  port: 3306
-  database: home
-  username: username
-  password: secret
+  host: http://10.31.2.91
+  port:
+  rootPath: /api
+  maxWaitTime: 5

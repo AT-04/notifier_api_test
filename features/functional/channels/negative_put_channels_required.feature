@@ -1,4 +1,4 @@
-@all @functional
+@all @functional @bug
 Feature: Negative responses after making a post request
   Background:
     Given I create a 'channel' with status code '200' and body as:

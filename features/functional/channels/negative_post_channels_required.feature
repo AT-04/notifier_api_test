@@ -1,4 +1,4 @@
-@all @functional
+@all @functional @bug
 Feature: Negative responses after making a post request
   @delete_channel
   Scenario Outline: Create a new channel without required params

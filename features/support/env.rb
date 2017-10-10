@@ -1,7 +1,6 @@
 require 'json'
 require 'json_spec/cucumber'
 require 'pathname'
-require 'pg'
 require 'rest-client'
 require 'yaml'
 $id_hash = {}
@@ -29,12 +28,6 @@ AfterConfiguration do
   $app_port = configuration['app']['port']
   $app_root = configuration['app']['rootPath']
   $app_max_wait_time = configuration['app']['maxWaitTime']
-  $bd_connection = configuration['database']['connection']
-  $bd_host = configuration['database']['host']
-  $bd_port = configuration['database']['port']
-  $bd_database = configuration['database']['database']
-  $bd_username = configuration['database']['username']
-  $bd_password = configuration['database']['password']
 end
 
 def last_json
