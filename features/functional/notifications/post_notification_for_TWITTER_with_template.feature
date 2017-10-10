@@ -1,5 +1,5 @@
 @all @functional @bug
-Feature: Negative post notification with templates
+Feature: Post notification with templates
 
   Background: Create new template and new channel
     Given I make a 'POST' request to '/templates' endpoint
