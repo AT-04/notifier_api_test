@@ -40,7 +40,7 @@ Feature: Functional post for Notification for TWITTER
         "templateId": null
       }
     """
-    Then I make a 'GET' request to '/notifications/$id' until the field 'notification' at 'status' is 'FAILED'
+    Then I make a 'GET' request to '/notifications/$id' until the field 'notification' at 'status' is 'DELIVERED'
     Examples:
       | priority | recipients     | subject | content                           | status_code |
       | HIGH     | testing_at04   | Test1   | A testing message from notifier 1 | 200         |
