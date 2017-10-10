@@ -8,7 +8,7 @@ module EndpointBuilder
     point = builder endpoint
     param.each_with_index do |value, index|
       params = "#{value[0].gsub(' ', '%20')}=#{value[1].gsub(' ', '%20')}"
-      params = "#{params.gsub('#', '%23')}"
+      params = params.gsub('#', '%23').to_s
       point = index.to_i.zero? ? "#{point}?#{params}" : "#{point}&#{params}"
     end
     point
