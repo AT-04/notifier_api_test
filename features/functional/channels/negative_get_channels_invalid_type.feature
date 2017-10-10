@@ -100,6 +100,6 @@ Feature: Negative request get channels with invalid type
     """
     """
     Examples:
-    | Name     | Case  |
+    | Name      | Case  |
     | NoTExists | true  |
     | NoTExists | false |

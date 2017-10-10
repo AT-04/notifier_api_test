@@ -1,16 +1,15 @@
-@all @functional
-Feature: Functional get for channels with params type for EMAIL
+@all @crud
+Feature: Get all channels
 
   Background:
     Given I make a 'POST' request to '/channels' endpoint
     When I set the body as:
     """
     {
-      "name": "AT04-Email-Demo",
-      "type": "EMAIL",
+      "name": "AT04-Web-Hook-Demo",
+      "type": "WEB_HOOK",
       "configuration": {
-        "mail.from": "example@example.com",
-        "mail.host": "40.97.162.130"
+        "url": "https://hooks.slack.com/services/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"
       }
     }
     """
@@ -18,9 +17,8 @@ Feature: Functional get for channels with params type for EMAIL
     Then I expect a '200' status code
     And I save the 'id' of 'channels'
   @delete_channel
-  Scenario: Get channel of type EMAIL
-    Given I make a 'GET' request to '/channels' with:
-    | type | EMAIL |
+  Scenario: Get all channels
+    Given I make a 'GET' request to '/channels' endpoint
     When I execute the request to the endpoint
     Then I expect a '200' status code
     And I build the response for "channels" with

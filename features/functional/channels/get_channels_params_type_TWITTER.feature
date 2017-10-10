@@ -31,4 +31,4 @@ Feature: Functional get for channels with params type for TWITTER
         "onFail": null
       }
     """
-    And The response body is the same as builded
+    And The response body should contain the builded response

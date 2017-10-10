@@ -16,14 +16,14 @@ Feature: Negative responses after making a get request by id
       }
     """
     Examples:
-    | Id  |
-    | abc |
-    | !@$ |
-    | 510@ |
-    | 510. |
-    | 510.1 |
-    | 510.a |
-    | 0510.$ |
+    | Id           |
+    | abc          |
+    | !@$          |
+    | 510@         |
+    | 510.         |
+    | 510.1        |
+    | 510.a        |
+    | 0510.$       |
     | 0510.!@#$@!# |
 
     Scenario: Can't Find a channel with nonexistent id

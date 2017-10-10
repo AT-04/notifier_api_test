@@ -17,19 +17,17 @@ Feature: delete channel
     Then I expect a '200' status code
     And I save the 'id' of 'channels'
 
-
+  @delete_channel
   Scenario Outline: Can't delete a channel with invalid endpoint
     Given I make a 'DELETE' request to '/<Endpoint>/$id' endpoint
     When I execute the request to the endpoint
-    Then I expect a '200' status code
-    And the response body contains excluding 'timestamp':
+    Then I expect a '404' status code
+    And excluding 'timestamp' and 'path' the response body contains:
     """
       {
-       "timestamp": 1507389627623,
         "status": 404,
         "error": "Not Found",
-        "message": "Not Found",
-       "path": "/api/<Endpoint>/$id"
+        "message": "Not Found"
       }
     """
     Examples:
@@ -40,5 +38,4 @@ Feature: delete channel
       | CHANNELS        |
       | channelll       |
       |                 |
-      | chanel24!@#$@!# |
 

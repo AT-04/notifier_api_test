@@ -8,57 +8,45 @@ module ResponseManager
     @copy = @template.is_a?(Hash) ? Hash[@template] : [].replace(@template)
   end
 
-  def self.replace_in_hash(hash)
-    @template.each_key do |key|
-      if !(@template[key].eql? hash[key]) && (hash.key? key)
-        @copy[key] = hash[key]
+  def self.replace_elements_in_collection(collection)
+    if @template.is_a?(Hash)
+      @template.each_key do |key|
+        @copy[key] = collection[key] if !(@template[key].eql? collection[key]) && (collection.key? key)
+      end
+    else
+      @template.first.each_key do |key|
+        @copy.first[key] = collection[key] if !(@template.first[key].eql? collection[key]) && (collection.key? key)
       end
     end
     @copy
   end
 
-  def self.diff_hash(hash)
-    hash.delete_if {|key| !(@copy[key].eql? @template[key])}
+  def self.diff_elements_in_collection(collection)
+    if @copy.is_a?(Hash)
+      collection.delete_if { |key| !(@copy[key].eql? @template[key]) }
+    else
+      collection.delete_if { |key| !(@copy.first[key].eql? @template.first[key]) }
+    end
   end
 
   def self.build_response(filename, request, expected, response)
     parse_file(filename)
-    request = JSON.parse(request)
-    expected = JSON.parse(expected)
-    response = JSON.parse(response)
-    @copy.is_a?(Hash) ? build_with_hash(request, expected, response) : build_with_array(request, expected, response)
-  end
-
-  def self.build_with_hash(request, expected, response)
-    puts replace_in_hash(request)
-    puts replace_in_hash(expected)
-    replace_in_hash(diff_hash(response))
-  end
-
-  def self.build_with_array(request, expected, response)
-    replace_in_array(request)
-    replace_in_array(expected)
-    replace_in_array(diff_array(response[0]))
-  end
-
-  def self.replace_in_array(array)
-    @template[0].each_key do |key|
-      if !(@template[0][key].eql? array[key]) && (array.key? key)
-        @copy[0][key] = array[key]
-      end
+    replace_elements_in_collection(JSON.parse(request))
+    replace_elements_in_collection(JSON.parse(expected))
+    if @copy.is_a?(Hash)
+      replace_elements_in_collection(diff_elements_in_collection(JSON.parse(response)))
+    else
+      replace_elements_in_collection(diff_elements_in_collection(JSON.parse(response).first))
     end
     @copy
   end
 
-  def self.diff_array(hash)
-    hash.delete_if {|key| !(@copy[0][key].eql? @template[0][key])}
-  end
-
-  def self.build_error_response(filename, expected, response)
-    parse_file(filename)
+  def self.contains_json(expected, response)
     expected = JSON.parse(expected)
     response = JSON.parse(response)
-    replace_in_hash(expected)
-    replace_in_hash(diff_hash(response))
+    response.each do |key|
+      return true if key == expected.first
+    end
+    false
   end
 end

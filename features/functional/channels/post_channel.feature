@@ -24,10 +24,10 @@ Feature: Post request for channels endpoint
     """
     And The response body is the same as builded
     Examples:
-    | Name              | Type     | Configuration                                                                                                                                                                                                                                                      | OnFail |
-    | AT04-WebHook-Demo | WEB_HOOK | "url": "https://hooks.slack.com/services/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"                                                                                                                                                                             | null   |
-    | AT04-Email-Demo   | EMAIL    | "mail.from":"example@jalasoft.com", "mail.host":"127.0.0.1"                                                                                                                                                                                                        | null   |
-    | AT04-Twitter-Demo | TWITTER  | "access_token": "912661821122805760-7NTyIrDHEeoa534SduWW3TQLBUaQzLm", "consumer_key": "KHjTQXRMRMO5N87oOVS7mR8lf", "consumer_secret": "LKj4G8C9FvokkBeBTrc120qKIl2oMbwLJdUYUqqkIQJIRKlHzO", "access_token_secret": "W47sYHdMXafd9kZK77aUEmnXaOIZDuJTrWGsV8DuPJNm8" | null   |
+    | Name              | Type     | Configuration                                                                                | OnFail |
+    | AT04-WebHook-Demo | WEB_HOOK | "url": "https://hooks.slack.com"                                                              | null   |
+    | AT04-Email-Demo   | EMAIL    | "mail.from":"example@jalasoft.com", "mail.host":"127.0.0.1"                                  | null   |
+    | AT04-Twitter-Demo | TWITTER  | "access_token": "a", "consumer_key": "b", "consumer_secret": "c", "access_token_secret": "d" | null   |
 
   @delete_channel
   Scenario Outline: Create a new channel for WebHook, Email and Twitter with all neccesary params
@@ -53,8 +53,8 @@ Feature: Post request for channels endpoint
     """
     And The response body is the same as builded
     Examples:
-    | Name              | Type     | Configuration                                                                                                                                                                                                                                                      | OnFail                                                                        |
-    | AT04-Slack-Demo   | SLACK    | "url": "https://hooks.slack.com/services/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"                                                                                                                                                                             | https://hooks.slack.com/services/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 |
-    | AT04-WebHook-Demo | WEB_HOOK | "url": "https://hooks.slack.com/services/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"                                                                                                                                                                             | https://hooks.slack.com/services/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 |
-    | AT04-Email-Demo   | EMAIL    | "mail.from":"example@jalasoft.com", "mail.host":"127.0.0.1"                                                                                                                                                                                                        | https://hooks.slack.com/services/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 |
-    | AT04-Twitter-Demo | TWITTER  | "access_token": "912661821122805760-7NTyIrDHEeoa534SduWW3TQLBUaQzLm", "consumer_key": "KHjTQXRMRMO5N87oOVS7mR8lf", "consumer_secret": "LKj4G8C9FvokkBeBTrc120qKIl2oMbwLJdUYUqqkIQJIRKlHzO", "access_token_secret": "W47sYHdMXafd9kZK77aUEmnXaOIZDuJTrWGsV8DuPJNm8" | https://hooks.slack.com/services/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 |
+    | Name              | Type     | Configuration                                                                                | OnFail                                                                        |
+    | AT04-Slack-Demo   | SLACK    | "url": "https://hooks.slack.com/services"                                                    | https://hooks.slack.com                                                       |
+    | AT04-WebHook-Demo | WEB_HOOK | "url": "https://hooks.slack.com/services"                                                    | https://hooks.slack.com                                                       |
+    | AT04-Email-Demo   | EMAIL    | "mail.from":"example@jalasoft.com", "mail.host":"127.0.0.1"                                  | https://hooks.slack.com/services/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 |
+    | AT04-Twitter-Demo | TWITTER  | "access_token": "a", "consumer_key": "b", "consumer_secret": "c", "access_token_secret": "d" | https://hooks.slack.com                                                       |

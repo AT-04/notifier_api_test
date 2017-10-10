@@ -1,5 +1,5 @@
 @all @functional
-Feature: Functional get for channels with params type for WEB_HOOKS
+Feature: Functional get for all channels
 
   Background:
     Given I make a 'POST' request to '/channels' endpoint
@@ -28,4 +28,4 @@ Feature: Functional get for channels with params type for WEB_HOOKS
         "onFail": null
       }
     """
-    And The response body is the same as builded
+    And The response body should contain the builded response
