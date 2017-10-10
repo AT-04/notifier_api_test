@@ -72,7 +72,7 @@ Feature: Functional post for Notification for SLACK
     Then I make a 'GET' request to '/notifications/$id' until the field 'notification' at 'status' is 'DELIVERED'
     Examples:
       | channel_id       | recipients | content                           |
-      | "$channels_id"  | #general   | A testing message from notifier 1 |
+      | "$channels_id"   | #general   | A testing message from notifier 1 |
       | $channels_id.5   | #general   | A testing message from notifier 2 |
       | $channels_id.435 | #general   | A testing message from notifier 3 |
       | $channels_id.645 | #general   | A testing message from notifier 4 |
