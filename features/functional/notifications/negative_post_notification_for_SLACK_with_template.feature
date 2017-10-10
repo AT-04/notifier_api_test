@@ -1,7 +1,6 @@
 @all @functional
 Feature: Negative post notification with templates
 
-
   Background: Create new template and new channel
     Given I make a 'POST' request to '/templates' endpoint
     When I set the body as:
@@ -32,7 +31,7 @@ Feature: Negative post notification with templates
     And I save the 'id' of 'channels'
 
   @delete_channel @delete_templates
-  Scenario: resend a notification without param
+  Scenario: Send a notification with format subject incorrect(another name)
     Given I make a 'POST' request to '/notifications' endpoint
     When I set the body with id:
       """
@@ -41,7 +40,7 @@ Feature: Negative post notification with templates
          "templateId":$templates_id,
          "priority":"HIGH",
          "recipients":["#general"],
-         "subject":"{ \"information\" : \"Verify email\"}",
+         "subject":"{ \"infortion\" : \"Verify email\"}",
          "content":"{ \"email\":\"juan@jalasoft.com\", \"code\": 50}"
       }
       """
