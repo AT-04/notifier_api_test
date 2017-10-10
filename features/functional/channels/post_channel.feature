@@ -25,7 +25,7 @@ Feature: Post request for channels endpoint
     And The response body is the same as builded
     Examples:
     | Name              | Type     | Configuration                                                                                | OnFail |
-    | AT04-WebHook-Demo | WEB_HOOK | "url": "https://hooks.slack.com                                                              | null   |
+    | AT04-WebHook-Demo | WEB_HOOK | "url": "https://hooks.slack.com"                                                              | null   |
     | AT04-Email-Demo   | EMAIL    | "mail.from":"example@jalasoft.com", "mail.host":"127.0.0.1"                                  | null   |
     | AT04-Twitter-Demo | TWITTER  | "access_token": "a", "consumer_key": "b", "consumer_secret": "c", "access_token_secret": "d" | null   |
 
